@@ -6,7 +6,7 @@ from utils import show_keypoints, getKeypointsObj, getListFromArray, getKeypoint
 
 
 class Main:
-    def __init__(self, arImagePath, live=True, selectOrdinate = True):
+    def __init__(self, arImagePath, live=True, selectOrdinate= False):
         self.ARIMAGE = cv.imread(arImagePath)
         self.WINDOWNAME = 'getcordinate'
         self.CAP = cv.VideoCapture(0)
@@ -81,9 +81,11 @@ if __name__ == "__main__":
 
     imageName = input('Please Enter the imageName: ')
     choice = input('Yes/No for select co_ordinate:')
-    if choice == 'y' or 'yes' or 'Yes' or 'YES':
+    if choice in ['y', 'yes', 'Yes', 'YES']:
         selectOrdinate = True
     else:
         selectOrdinate = False
+
+    print(selectOrdinate)
     a = Main(os.path.join(BASE_DIR, imageName), selectOrdinate=selectOrdinate)
     a.run()
